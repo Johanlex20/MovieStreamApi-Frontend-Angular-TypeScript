@@ -1,0 +1,26 @@
+<h1 class="text-center">LISTA DE SERIES</h1>
+
+  <table class="shadow-2x1 border-2 border-cyan-200 w-full">
+    <thead class="text-white">
+        <tr class="py-3 bg-cyan-800">
+            <th>Id</th>
+            <th>Titulo</th>
+            <th>Popularidad</th>
+            <th>Num Episodios</th>
+            <th>Genero</th>
+            <th>Video</th>
+            <th>Poster</th>
+        </tr>
+    </thead>
+    <tbody class="text-cyan-900 text-center">
+        <tr class="bg-cyan-200 cursor-pointer duration-300" *ngFor="let serie of series">
+            <td class="py-3 px-6">{{serie.id}}</td>
+            <td class="py-3 px-6">{{serie.titulo}}</td>
+            <td class="py-3 px-6">{{serie.popularidad}}</td>
+            <td class="py-3 px-6">{{serie.numEpisodiosTotal}}</td>
+            <td class="py-3 px-6">{{serie.genero}}</td>
+            <td class="py-3 px-6">{{serie.videoKey}}</td>
+            <td class="py-3 px-6">{{serie.poster}}</td>
+        </tr>
+    </tbody>
+  </table>
