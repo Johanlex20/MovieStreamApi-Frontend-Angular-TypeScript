@@ -9,42 +9,53 @@ import { Router } from '@angular/router';
   styleUrls: []
 })
 export class SerieFormComponent {
-  form:FormGroup = this.fb.group({
-    nombreSerie:['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]]
+
+  errors: string[] = [];
+
+
+  form: FormGroup = this.fb.group({
+    nombreSerie: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]]
   });
 
-
+  
   constructor(
     private fb: FormBuilder,
-    private serieService:SerieService,
-    private router:Router
-  ){}
+    private serieService: SerieService,
+    private router: Router
+  ) { }
 
 
-  controlHasError(control:string, error:string): boolean{
+  controlHasError(control: string, error: string){
     return this.form.controls[control].hasError(error);
   };
-  
 
-  save(){
-    //console.log('form valid', this.form.valid);
-    //console.log('form', this.form.value);
-    
-    if(this.form.invalid){
+
+  save() {
+    if (this.form.invalid) {
       console.log("formulario invalido");
       return;
     }
 
     let serie = this.form.value;
-    
+
     this.serieService.create(serie)
-    .subscribe(()=>{
-      alert("Serie creada con exito");
-      this.router.navigate(['/']);
-    }, error =>{
-      console.error('Error al crear la serie', error);
-    });
-    
+      .subscribe({
+
+        next:serie=>{
+          this.router.navigate(['/']);
+        },
+        error: error => {
+          if (error.error.status === 400) {
+            this.errors.push(error.error.detail);
+          } else if (error.error.status === 422) {
+            this.errors.push(...error.error.errors);
+          } else if(error.error.status === 404){
+            this.errors.push(error.error.title);
+          } else if (error.error.status === 500 || 502){
+            this.errors.push(error.error.title);
+          }
+        }
+      });
   }
 
 }
