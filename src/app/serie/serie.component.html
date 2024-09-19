@@ -21,6 +21,7 @@
                     <th>Genero</th>
                     <th>Video</th>
                     <th>Poster</th>
+                    <th>Opciones</th>
                 </tr>
             </thead>
             <tbody class="text-cyan-900 text-center">
@@ -31,6 +32,12 @@
                     <td class="">{{serie.genero}}</td>
                     <td class="">{{serie.videoKey}}</td>
                     <td class="">{{serie.poster}}</td>
+                    <td>
+                        <button (click)="deleteSerie(serie)" class="  text-red-600 font-bold text-base hover:text-red-200">
+                            <span class="material-icons">delete</span>
+                        </button>
+    
+                    </td>
                 </tr>
             </tbody>
         </table>
