@@ -1,4 +1,4 @@
-<div class="bg-blue-950 h-screen w-full p-2 flex flex-col">
+<div class="bg-blue-950 min-h-screen w-full p-2 flex flex-col">
 
     <div class="p-4">
         <h1 class="text-center text-white font-extrabold text-5xl">LISTA DE SERIES</h1>
@@ -16,8 +16,8 @@
                     <tr class="bg-blue-900">
                         <th class="p-3">Titulo</th>
                         <th class="p-3">Datos</th>
-                        <th class="p-3">Genero</th>
-                        <th class="p-3">Plataforma</th>
+                        <th class="p-3 max-md:hidden">Genero</th>
+                        <th class="p-3 max-md:hidden">Plataforma</th>
                         <th class="p-3">Poster</th>
                         <th class="p-3">Opciones</th>
                     </tr>
@@ -27,7 +27,7 @@
 
                         <td class="font-bold text-xl">{{serie.titulo}}</td>
 
-                        <td class="grid grid-cols-3 grid-rows-[2rem_4rem]">
+                        <td class="flex flex-col  lg:grid grid-cols-3 grid-rows-[2rem_4rem]">
 
                             <div class="col-[1] row-[1] place-content-center">
                                 <h2 class="text-azulbarra font-bold">Popularidad</h2>
@@ -70,9 +70,9 @@
                             </div>
                         </td>
 
-                        <td class="font-bold text-xl">{{serie.genero}}</td>
+                        <td class="font-bold text-xl max-md:hidden">{{serie.genero}}</td>
 
-                        <td class="font-bold text-xl">{{serie.plataforma}}</td>
+                        <td class="font-bold text-xl max-md:hidden">{{serie.plataforma}}</td>
                         
                         <td class="relative">
                             <a [href]="'https://www.youtube.com/watch?v='+serie.videoKey" target="_blank" class="group block relative">
