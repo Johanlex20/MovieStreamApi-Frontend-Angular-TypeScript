@@ -25,6 +25,7 @@ export interface Serie {
     videoKey:              string;
     tituloVideo:           string;
     fechaLanzamientoSerie: Date;
+    plataforma:            string;
 }
 
 export enum Genero {

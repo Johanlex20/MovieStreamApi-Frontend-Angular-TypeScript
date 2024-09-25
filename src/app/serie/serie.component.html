@@ -1,49 +1,103 @@
 <div class="bg-blue-950 h-screen w-full p-2 flex flex-col">
-   
+
     <div class="p-4">
         <h1 class="text-center text-white font-extrabold text-5xl">LISTA DE SERIES</h1>
     </div>
-    
- 
-<div class="h-full flex flex-col justify-center">
-    <div class="mb-5">
-        <button class="bg-blue-900 p-3 rounded-3xl text-white font-bold text-base hover:bg-sky-600" routerLink="/new">NUEVA
-            SERIE
-        </button>
-    </div>
-    <div class="overflow-x-auto border-2 border-none rounded-lg justify-center ">
-        <table class="table-auto w-full shadow-2x1">
-            <thead class="text-white">
-                <tr class="py-3 bg-blue-900">
-                    <th>Titulo</th>
-                    <th>Popularidad</th>
-                    <th>Episodios</th>
-                    <th>Genero</th>
-                    <th>Video</th>
-                    <th>Poster</th>
-                    <th>Opciones</th>
-                </tr>
-            </thead>
-            <tbody class="text-cyan-900 text-center">
-                <tr class="bg-blue-200 cursor-pointer duration-300" *ngFor="let serie of series">
-                    <td class="">{{serie.titulo}}</td>
-                    <td class="">{{serie.popularidad}}</td>
-                    <td class="">{{serie.numEpisodiosTotal}}</td>
-                    <td class="">{{serie.genero}}</td>
-                    <td class="">{{serie.videoKey}}</td>
-                    <td class="">{{serie.poster}}</td>
-                    <td>
-                        <button (click)="deleteSerie(serie)" class="  text-red-600 font-bold text-base hover:text-red-200">
-                            <span class="material-icons">delete</span>
-                        </button>
-    
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
 
+    <div class="h-full flex flex-col justify-start">
+        <div class="mb-5">
+            <button class="bg-blue-900 p-3 rounded-3xl text-white font-bold text-base hover:bg-sky-600"
+                routerLink="/new">NUEVA SERIE
+            </button>
+        </div>
+        <div class="overflow-x-auto border-2 border-none rounded-lg justify-center ">
+            <table class="table-auto w-full shadow-2x1 ">
+                <thead class="text-white text-2xl">
+                    <tr class="bg-blue-900">
+                        <th class="p-3">Titulo</th>
+                        <th class="p-3">Datos</th>
+                        <th class="p-3">Genero</th>
+                        <th class="p-3">Plataforma</th>
+                        <th class="p-3">Poster</th>
+                        <th class="p-3">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody class="text-cyan-900 text-center">
+                    <tr class="bg-blue-200 cursor-pointer duration-300 border-b-2 " *ngFor="let serie of series">
 
- 
+                        <td class="font-bold text-xl">{{serie.titulo}}</td>
+
+                        <td class="grid grid-cols-3 grid-rows-[2rem_4rem]">
+
+                            <div class="col-[1] row-[1] place-content-center">
+                                <h2 class="text-azulbarra font-bold">Popularidad</h2>
+                            </div>
+                            <div
+                                class="col-[1] row-[2] relative bg-white h-60 w-60 rounded-full flex items-center justify-center mx-auto">
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <svg width="60" height="60" class="flex items-center justify-center">
+                                        <circle r="25" cx="30" cy="30" class="fill-none stroke-gray-200"
+                                            stroke-width="5"></circle>
+                                        <circle r="25" cx="30" cy="30"
+                                            class="progress fill-none stroke-[var(--color1)] rotate-[-90deg] transform origin-center stroke-linecap-round transition-all duration-300"
+                                            id="progress-{{ serie.id }}"
+                                            style="stroke-dasharray: 157; stroke-dashoffset: 157;">
+                                        </circle>
+                                    </svg>
+                                </div>
+                                <div class="box_percentage absolute inset-0 flex justify-center items-center">
+                                    <p id="percentage-{{ serie.id }}"
+                                        class="percentage text-[var(--color1)] font-bold text-base">%</p>
+                                </div>
+                            </div>
+
+                            <div class="col-[2] row-[1] place-content-center">
+                                <h2 class="text-blue-500 font-bold">Temporadas</h2>
+                            </div>
+                            <div class="col-[2] row-[2] place-content-center inline-grid items-center">
+                                <p class="bg-blue-500 w-fit min-w-6 rounded-lg border-none text-white font-extrabold">
+                                    {{serie.numTemporadas}}</p>
+                            </div>
+
+                            <div class="col-[3] row-[1] place-content-center">
+                                <h2 class="text-blue-700 font-bold">Episodios</h2>
+                            </div>
+
+                            <div class="col-[3] row-[2] place-content-center inline-grid items-center">
+                                <h2
+                                    class="bg-blue-700 w-fit min-w-6 px-2 rounded-lg border-none text-white font-extrabold">
+                                    {{serie.numEpisodiosTotal}}</h2>
+                            </div>
+                        </td>
+
+                        <td class="font-bold text-xl">{{serie.genero}}</td>
+
+                        <td class="font-bold text-xl">{{serie.plataforma}}</td>
+                        
+                        <td class="relative">
+                            <a [href]="'https://www.youtube.com/watch?v='+serie.videoKey" target="_blank" class="group block relative">
+                              <!-- Imagen del poster -->
+                              <img [src]="'http://localhost:8080/api/media/image?poster=%2F' + serie.poster"
+                                alt="{{serie.titulo}}"
+                                class="h-16 w-16 object-cover rounded-full mx-auto transition-all duration-300 group-hover:brightness-50">
+                            
+                              <!-- Ícono de "Play" -->
+                              <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <span class="material-icons text-white text-4xl">play_circle_filled</span>
+                              </div>
+                            </a>
+                          </td>
+
+                        <td>
+                            <button (click)="deleteSerie(serie)"
+                                class="  text-red-600 font-bold text-base hover:text-red-200">
+                                <span class="material-icons">delete</span>
+                            </button>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
