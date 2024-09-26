@@ -1,14 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SerieService } from '../serie/serie.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-serie-form',
   templateUrl: './serie-form.component.html',
   styleUrls: []
 })
-export class SerieFormComponent {
+export class SerieFormComponent  implements OnInit {
 
   errors: string[] = [];
 
@@ -21,8 +21,20 @@ export class SerieFormComponent {
   constructor(
     private fb: FormBuilder,
     private serieService: SerieService,
-    private router: Router
+    private router: Router,
+    private route:ActivatedRoute
   ) { }
+
+
+
+  ngOnInit(): void {
+    const serieId = this.route.snapshot.paramMap.get('id')!;
+
+    this.serieService.get(parseInt(serieId))
+    .subscribe( serie=>{
+      console.log('serie', serie);
+    })
+  }
 
 
   controlHasError(control: string, error: string){

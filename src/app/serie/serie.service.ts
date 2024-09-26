@@ -19,6 +19,10 @@ export class SerieService {
     return this.http.post<string>('http://localhost:8080/api/series/buscar',serie );
   }
 
+  get(id:number){
+    return this.http.get<Serie>(`http://localhost:8080/api/series/${id}`);
+  }
+
   delete(serie:Serie){
     return this.http.delete(`http://localhost:8080/api/series/${serie.id}`);
   }

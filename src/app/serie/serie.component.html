@@ -7,7 +7,7 @@
     <div class="h-full flex flex-col justify-start">
         <div class="mb-5">
             <button class="bg-blue-900 p-3 rounded-3xl text-white font-bold text-base hover:bg-sky-600"
-                routerLink="/new">NUEVA SERIE
+                routerLink="/new/serie">NUEVA SERIE
             </button>
         </div>
         <div class="overflow-x-auto border-2 border-none rounded-lg justify-center ">
@@ -18,12 +18,12 @@
                         <th class="p-3">Datos</th>
                         <th class="p-3 max-md:hidden">Genero</th>
                         <th class="p-3 max-md:hidden">Plataforma</th>
-                        <th class="p-3">Poster</th>
-                        <th class="p-3">Opciones</th>
+                        <th class="p-3">Trailer</th>
+                        <th class="p-3">+</th>
                     </tr>
                 </thead>
                 <tbody class="text-cyan-900 text-center">
-                    <tr class="bg-blue-200 cursor-pointer duration-300 border-b-2 " *ngFor="let serie of series">
+                    <tr class="bg-blue-200 cursor-pointer duration-300 border-b-2" *ngFor="let serie of series">
 
                         <td class="font-bold text-xl">{{serie.titulo}}</td>
 
@@ -88,11 +88,17 @@
                             </a>
                           </td>
 
-                        <td>
+                        <td class="">
                             <button (click)="deleteSerie(serie)"
-                                class="  text-red-600 font-bold text-base hover:text-red-200">
+                                class="flex items-center mb-5 text-red-600 font-bold text-base p-1 hover:text-red-200 hover:bg-red-600 rounded-full">
                                 <span class="material-icons">delete</span>
                             </button>
+
+                            <button [routerLink]="['/serie/', serie.id, 'edit']"
+                            class=" flex items-center text-green-600 font-bold text-base p-1 hover:text-green-200 hover:bg-green-600 rounded-full">
+                            <span class="material-icons">edit</span>
+                        </button>
+                        
                         </td>
 
                     </tr>

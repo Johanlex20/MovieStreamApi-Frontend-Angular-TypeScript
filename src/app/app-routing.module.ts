@@ -5,11 +5,15 @@ import { SerieFormComponent } from './serie-form/serie-form.component';
 
 const routes: Routes = [
   {
-    path:'',
+    path:'series',
     component: SerieComponent
   },
   {
-    path:'new',
+    path:'new/serie',
+    component:SerieFormComponent
+  },
+  {
+    path:'serie/:id/edit',
     component:SerieFormComponent
   }
   
