@@ -15,12 +15,16 @@ export class SerieService {
     return this.http.get<SeriePage>('http://localhost:8080/api/series');
   }
 
-  create(serie: string){
-    return this.http.post<string>('http://localhost:8080/api/series/buscar',serie );
+  create(serie: Serie){
+    return this.http.post<Serie>('http://localhost:8080/api/series/buscar',serie );
   }
 
   get(id:number){
     return this.http.get<Serie>(`http://localhost:8080/api/series/${id}`);
+  }
+
+  update(id:number, serie:Serie){
+    return this.http.put<Serie>(`http://localhost:8080/api/series/${id}`, serie);
   }
 
   delete(serie:Serie){

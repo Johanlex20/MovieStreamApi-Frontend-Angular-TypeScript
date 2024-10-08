@@ -1,46 +1,246 @@
-<div class="bg-sky-900 h-screen w-full flex justify-center items-center">
-    <div class="bg-sky-100 m-4 min-w-10/12 w-4/5 h-1/3 flex flex-col p-4 justify-around items-center rounded-2xl">
-        <h1 class="text-sky-900 font-extrabold text-4xl sm:text-5xl">NUEVA SERIE</h1>
+<div *ngIf="form" class="bg-sky-900 h-screen w-full flex justify-center items-center">
+    <div class="bg-sky-100 m-4 min-w-10/12 w-4/5 h-fit flex flex-col p-4 justify-around items-center rounded-2xl">
+        <h1 class="text-sky-900 font-extrabold text-4xl sm:text-5xl"> {{ !serie ? 'AGREGAR' : 'ACTUALIZAR' }} SERIE </h1>
 
         <div class="text-red-400" *ngIf="errors.length">
-            <ul >
+            <ul>
                 <li *ngFor="let error of errors"> {{ error }} </li>
             </ul>
         </div>
 
         <form class="w-full" [formGroup]="form" (ngSubmit)="save()" autocomplete="off">
-            <label class="font-extrabold text-2xl text-sky-900" for="nombreSerie">Título Serie:</label>
+          
             <div class="my-5">
-                <input formControlName="nombreSerie" 
-                class="h-10 text-2xl w-full rounded-md border p-2" 
-                
-                [class.border-red-500]="form.controls['nombreSerie'].touched && form.controls['nombreSerie'].invalid || errors.length > 0"
-                [class.border-green-500]="form.controls['nombreSerie'].touched && form.controls['nombreSerie'].valid || errors.length === 0"
-
-                  id="nombreSerie" 
-                  type="text" 
-                  placeholder="Ingresa Serie">
+                <label class="font-extrabold text-2xl text-sky-900" for="titulo">Título Serie:</label>
+                <input formControlName="titulo" class="h-10 text-2xl w-full rounded-md border p-2"
+                  
+                    [class.border-red-500]="form.controls['titulo'].touched && form.controls['titulo'].invalid || errors.length > 0"
+                    [class.border-green-500]="form.controls['titulo'].touched && form.controls['titulo'].valid || errors.length === 0"
+                    
+                    id="titulo" 
+                    type="text" 
+                    placeholder="Ingresa Serie">
 
                 <!-- Mostrar mensajes de error si hay validaciones fallidas -->
-                <div class="text-red-500 mt-2 text-sm" *ngIf="form.controls['nombreSerie'].touched && form.controls['nombreSerie'].invalid">
-                    <ng-container *ngIf="controlHasError('nombreSerie', 'required')">
+                <div class="text-red-500 mt-2 text-sm"
+                    *ngIf="form.controls['titulo'].touched && form.controls['titulo'].invalid">
+                    <ng-container *ngIf="controlHasError('titulo', 'required')">
                         El título es obligatorio.
                     </ng-container>
-                    <ng-container *ngIf="controlHasError('nombreSerie', 'minlength')">
+                    <ng-container *ngIf="controlHasError('titulo', 'minlength')">
                         El título debe tener al menos 3 caracteres.
                     </ng-container>
-                    <ng-container *ngIf="controlHasError('nombreSerie', 'maxlength')">
+                    <ng-container *ngIf="controlHasError('titulo', 'maxlength')">
                         El título no puede tener más de 100 caracteres.
                     </ng-container>
                 </div>
-
             </div>
+
+            <div *ngIf="serie">
+                <div class="my-5">
+                    <label class="font-extrabold text-2xl text-sky-900" for="sinopsis">Sinopsis:</label>
+                    <textarea formControlName="sinopsis" class="h-fit min-h-40 text-2xl w-full rounded-md border p-2"
+                        
+                        [class.border-red-500]="form.controls['sinopsis'].touched && form.controls['sinopsis'].invalid || errors.length > 0"
+                        [class.border-green-500]="form.controls['sinopsis'].touched && form.controls['sinopsis'].valid || errors.length === 0"
+                        
+                        id="sinopsis" 
+                        type="text" 
+                        placeholder="Sipnosis">
+                    </textarea>
+    
+                    <!-- Mostrar mensajes de error si hay validaciones fallidas -->
+                    <div class="text-red-500 mt-2 text-sm"
+                    *ngIf="form.controls['sinopsis'].touched && form.controls['sinopsis'].invalid">
+                        <ng-container *ngIf="controlHasError('sinopsis', 'required')">
+                            Sinopsis es obligatorio.
+                        </ng-container>
+                        <ng-container *ngIf="controlHasError('sinopsis', 'minlength')">
+                            Sinopsis debe tener al menos 10 caracteres.
+                        </ng-container>
+                        <ng-container *ngIf="controlHasError('sinopsis', 'maxlength')">
+                            Sinopsis no puede tener más de 000 caracteres.
+                        </ng-container>
+                    </div>
+                </div>
+       
+                <!--
+                <div class="my-5">
+                    <label class="font-extrabold text-2xl text-sky-900" for="numTemporadas">Temporadas Serie:</label>
+                    <input formControlName="numTemporadas" class="h-10 text-2xl w-full rounded-md border p-2"
+                        
+                        [class.border-red-500]="form.controls['numTemporadas'].touched && form.controls['numTemporadas'].invalid || errors.length > 0"
+                        [class.border-green-500]="form.controls['numTemporadas'].touched && form.controls['numTemporadas'].valid || errors.length === 0"
+                        
+                        id="numTemporadas" 
+                        type="number" 
+                        placeholder="Ingresa numero de temporadas">
+    
+                    <!-- Mostrar mensajes de error si hay validaciones fallidas 
+                    <div class="text-red-500 mt-2 text-sm"
+                    *ngIf="form.controls['numTemporadas'].touched && form.controls['numTemporadas'].invalid">
+                        <ng-container *ngIf="controlHasError('numTemporadas', 'required')">
+                            Numero de temporadas es obligatorio.
+                        </ng-container>
+                        <ng-container *ngIf="controlHasError('numTemporadas', 'min')">
+                            El Numero debe ser mayor a 0
+                        </ng-container>
+                        <ng-container *ngIf="controlHasError('numTemporadas', 'pattern')">
+                            Solo se aceptan numeros
+                        </ng-container>   
+                    </div>
+                </div>
+            
+                <div class="my-5">
+                    <label class="font-extrabold text-2xl text-sky-900" for="numEpisodiosTotal">Numero Capitulos:</label>
+                    <input formControlName="numEpisodiosTotal" class="h-10 text-2xl w-full rounded-md border p-2"
+                        
+                        [class.border-red-500]="form.controls['numEpisodiosTotal'].touched && form.controls['numEpisodiosTotal'].invalid || errors.length > 0"
+                        [class.border-green-500]="form.controls['numEpisodiosTotal'].touched && form.controls['numEpisodiosTotal'].valid || errors.length === 0"
+                        
+                        id="numEpisodiosTotal" 
+                        type="number" 
+                        placeholder="Ingresa numero de episodios">
+    
+                    <!-- Mostrar mensajes de error si hay validaciones fallidas 
+                    <div class="text-red-500 mt-2 text-sm"
+                    *ngIf="form.controls['numEpisodiosTotal'].touched && form.controls['numEpisodiosTotal'].invalid">
+                        <ng-container *ngIf="controlHasError('numEpisodiosTotal', 'required')">
+                            Numero de capitulos es obligatorio.
+                        </ng-container>
+                        <ng-container *ngIf="controlHasError('numEpisodiosTotal', 'min')">
+                            El Numero debe ser mayor a 0
+                        </ng-container>
+                        <ng-container *ngIf="controlHasError('numEpisodiosTotal', 'pattern')">
+                            Solo se aceptan numeros
+                        </ng-container>   
+                    </div>
+                </div>
+
+                <div class="my-5">
+                    <label class="font-extrabold text-2xl text-sky-900" for="popularidad">Popularidad:</label>
+                    <input formControlName="popularidad" class="h-10 text-2xl w-full rounded-md border p-2"
+                        
+                        [class.border-red-500]="form.controls['popularidad'].touched && form.controls['popularidad'].invalid || errors.length > 0"
+                        [class.border-green-500]="form.controls['popularidad'].touched && form.controls['popularidad'].valid || errors.length === 0"
+                        
+                        id="popularidad" 
+                        type="number" 
+                        placeholder="Popularidad">
+    
+                    <!-- Mostrar mensajes de error si hay validaciones fallidas 
+                    <div class="text-red-500 mt-2 text-sm"
+                    *ngIf="form.controls['popularidad'].touched && form.controls['popularidad'].invalid">
+                        <ng-container *ngIf="controlHasError('popularidad', 'required')">
+                            Datos popularidad son obligatorios.
+                        </ng-container>
+                        <ng-container *ngIf="controlHasError('popularidad', 'min')">
+                            El Numero debe ser mayor a 0
+                        </ng-container>
+                        <ng-container *ngIf="controlHasError('popularidad', 'pattern')">
+                            Solo se aceptan numeros
+                        </ng-container>   
+                    </div>
+                </div>
+            -->
+           
+
+                <div class="my-5">
+                    <label class="font-extrabold text-2xl text-sky-900" for="genero">Genero:</label>
+                    <input formControlName="genero" class="h-10 text-2xl w-full rounded-md border p-2"
+                        
+                        [class.border-red-500]="form.controls['genero'].touched && form.controls['genero'].invalid || errors.length > 0"
+                        [class.border-green-500]="form.controls['genero'].touched && form.controls['genero'].valid || errors.length === 0"
+                        
+                        id="genero" 
+                        type="text" 
+                        placeholder="Genero">
+    
+                    <!-- Mostrar mensajes de error si hay validaciones fallidas -->
+                    <div class="text-red-500 mt-2 text-sm"
+                    *ngIf="form.controls['genero'].touched && form.controls['genero'].invalid">
+                        <ng-container *ngIf="controlHasError('genero', 'required')">
+                            Genero es obligatorios.
+                        </ng-container>  
+                    </div>
+                </div>
+
+                <!--
+                <div class="my-5">
+                    <label class="font-extrabold text-2xl text-sky-900" for="videoKey">Id Video:</label>
+                    <input formControlName="videoKey" class="h-10 text-2xl w-full rounded-md border p-2"
+                        
+                        [class.border-red-500]="form.controls['videoKey'].touched && form.controls['videoKey'].invalid || errors.length > 0"
+                        [class.border-green-500]="form.controls['videoKey'].touched && form.controls['videoKey'].valid || errors.length === 0"
+                        
+                        id="videoKey" 
+                        type="text" 
+                        placeholder="Id Video Youtube">
+    
+                    <!-- Mostrar mensajes de error si hay validaciones fallidas 
+                    <div class="text-red-500 mt-2 text-sm"
+                    *ngIf="form.controls['videoKey'].touched && form.controls['videoKey'].invalid">
+                        <ng-container *ngIf="controlHasError('videoKey', 'required')">
+                            Id Video Youtube es obligatorios.
+                        </ng-container>  
+                    </div>
+                </div>
+
+                <div class="my-5">
+                    <label class="font-extrabold text-2xl text-sky-900" for="fechaLanzamientoSerie">Fecha Lanzamiento:</label>
+                    <input formControlName="fechaLanzamientoSerie" class="h-10 text-2xl w-full rounded-md border p-2"
+                        
+                        [class.border-red-500]="form.controls['fechaLanzamientoSerie'].touched && form.controls['fechaLanzamientoSerie'].invalid || errors.length > 0"
+                        [class.border-green-500]="form.controls['fechaLanzamientoSerie'].touched && form.controls['fechaLanzamientoSerie'].valid || errors.length === 0"
+                        
+                        id="fechaLanzamientoSerie" 
+                        type="date">
+    
+                    <!-- Mostrar mensajes de error si hay validaciones fallidas 
+                    <div class="text-red-500 mt-2 text-sm"
+                    *ngIf="form.controls['fechaLanzamientoSerie'].touched && form.controls['fechaLanzamientoSerie'].invalid">
+                        <ng-container *ngIf="controlHasError('fechaLanzamientoSerie', 'required')">
+                            Fecha Lanzamiento es obligatorios.
+                        </ng-container>  
+                    </div>
+                </div>
+
+                <div class="my-5">
+                    <label class="font-extrabold text-2xl text-sky-900" for="plataforma">Plataforma:</label>
+                    <input formControlName="plataforma" class="h-10 text-2xl w-full rounded-md border p-2"
+                        
+                        [class.border-red-500]="form.controls['plataforma'].touched && form.controls['plataforma'].invalid || errors.length > 0"
+                        [class.border-green-500]="form.controls['plataforma'].touched && form.controls['plataforma'].valid || errors.length === 0"
+                        
+                        id="plataforma" 
+                        type="text">
+    
+                    <!-- Mostrar mensajes de error si hay validaciones fallidas 
+                    <div class="text-red-500 mt-2 text-sm"
+                    *ngIf="form.controls['plataforma'].touched && form.controls['plataforma'].invalid">
+                        <ng-container *ngIf="controlHasError('plataforma', 'required')">
+                            Plataforma es obligatorios.
+                        </ng-container>  
+                    </div>
+                </div>
+
+                 -->
+
+                <div class="my-5">
+                    <label class="font-extrabold text-2xl text-sky-900" for="poster">Poster:</label>
+                    <img [src]="'http://localhost:8080/api/media/image?poster=%2F' + serie.poster" class="rounded-md border p-2 h-auto w-80"
+                    id="poster" type="img">
+                </div>
+            </div>
+
+
             <div class="flex justify-end">
-                <button type="button" routerLink="/series" class="bg-sky-900 p-2 mr-2 rounded-lg text-white font-bold hover:bg-sky-600">
+                <button type="button" routerLink="/series"
+                    class="bg-sky-900 p-2 mr-2 rounded-lg text-white font-bold hover:bg-sky-600">
                     Cancelar
                 </button>
                 <button type="submit" class="bg-sky-900 p-2 rounded-lg text-white font-bold hover:bg-sky-600">
-                    Enviar
+                    {{ !serie ? 'AGREGAR' : 'ACTUALIZAR' }}
                 </button>
             </div>
         </form>
