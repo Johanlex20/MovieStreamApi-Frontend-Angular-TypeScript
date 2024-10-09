@@ -33,21 +33,15 @@ export class SerieFormComponent implements OnInit {
           this.serie = serie;
 
           this.form = this.fb.group({
-            titulo: [serie.titulo, [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
-            //numTemporadas:[serie.numTemporadas, [Validators.required, Validators.min(1), Validators.pattern(/^[0-9]+$/)]],
-            //numEpisodiosTotal:[serie.numEpisodiosTotal, [Validators.required, Validators.min(1), Validators.pattern(/^[0-9]+$/)]],
+            nombreSerie: [serie.titulo, [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
             sinopsis:[serie.sinopsis, [Validators.required, Validators.minLength(10), Validators.maxLength(2000)]],
-            //popularidad:[serie.popularidad, [Validators.required, Validators.min(1), Validators.pattern(/^[0-9]+$/)]],
             genero: [serie.genero, [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
-            //videoKey:[serie.videoKey, [Validators.required]], 
-            //fechaLanzamientoSerie:[serie.fechaLanzamientoSerie, [Validators.required]],
-            //plataforma:[serie.plataforma, [Validators.required]]
           });
 
         });
     } else {
       this.form = this.fb.group({
-        titulo: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]]
+        nombreSerie: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]]
       });
     }
   }
@@ -68,8 +62,10 @@ export class SerieFormComponent implements OnInit {
 
     if (this.serie) {
       request = this.serieService.update(this.serie.id, serie);
+      alert("serie actualizada con exito");
     } else {
       request = this.serieService.create(serie); 
+      alert("serie creada con exito");
     }
 
     request.subscribe({
