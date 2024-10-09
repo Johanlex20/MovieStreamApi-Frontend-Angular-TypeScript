@@ -90,13 +90,13 @@
 
                         <td class="">
                             <button (click)="deleteSerie(serie)"
-                                class="flex items-center mb-5 text-red-600 font-bold text-base p-1 hover:text-red-200 hover:bg-red-600 rounded-full">
-                                <span class="material-icons">delete</span>
+                                class="flex items-center mb-5 text-red-600 font-bold text-base p-1 hover:text-red-200 hover:bg-red-600 rounded-full duration-500">
+                                <span title="Eliminar" class="material-icons">delete</span>
                             </button>
 
                             <button [routerLink]="['/serie/', serie.id, 'edit']"
-                            class=" flex items-center text-green-600 font-bold text-base p-1 hover:text-green-200 hover:bg-green-600 rounded-full">
-                            <span class="material-icons">edit</span>
+                            class=" flex items-center text-green-600 font-bold text-base p-1 hover:text-green-200 hover:bg-green-600 rounded-full duration-500">
+                            <span title="Editar" class="material-icons">edit</span>
                         </button>
                         
                         </td>

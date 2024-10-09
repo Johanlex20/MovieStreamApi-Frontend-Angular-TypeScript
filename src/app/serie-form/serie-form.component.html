@@ -11,7 +11,7 @@
         <form class="w-full" [formGroup]="form" (ngSubmit)="save()" autocomplete="off">
           
             <div class="my-5">
-                <label class="font-extrabold text-2xl text-sky-900" for="titulo">Título Serie:</label>
+                <label class="font-extrabold text-2xl text-sky-900" >Título Serie:</label>
                 <input formControlName="nombreSerie" class="h-10 text-2xl w-full rounded-md border p-2"
                   
                     [class.border-red-500]="form.controls['nombreSerie'].touched && form.controls['nombreSerie'].invalid || errors.length > 0"
@@ -38,7 +38,7 @@
 
             <div *ngIf="serie">
                 <div class="my-5">
-                    <label class="font-extrabold text-2xl text-sky-900" for="sinopsis">Sinopsis:</label>
+                    <label class="font-extrabold text-2xl text-sky-900" >Sinopsis:</label>
                     <textarea formControlName="sinopsis" class="h-fit min-h-40 text-2xl w-full rounded-md border p-2"
                         
                         [class.border-red-500]="form.controls['sinopsis'].touched && form.controls['sinopsis'].invalid || errors.length > 0"
@@ -66,7 +66,7 @@
        
 
                 <div class="my-5">
-                    <label class="font-extrabold text-2xl text-sky-900" for="genero">Genero:</label>
+                    <label class="font-extrabold text-2xl text-sky-900">Genero:</label>
                     <input formControlName="genero" class="h-10 text-2xl w-full rounded-md border p-2"
                         
                         [class.border-red-500]="form.controls['genero'].touched && form.controls['genero'].invalid || errors.length > 0"
@@ -86,7 +86,7 @@
                 </div>
 
                 <div class="my-5">
-                    <label class="font-extrabold text-2xl text-sky-900" for="poster">Poster:</label>
+                    <label class="font-extrabold text-2xl text-sky-900">Poster:</label>
                     <img [src]="'http://localhost:8080/api/media/image?poster=%2F' + serie.poster" class="rounded-md border p-2 h-auto w-80"
                     id="poster" type="img">
                 </div>
