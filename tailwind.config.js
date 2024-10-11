@@ -13,6 +13,9 @@ module.exports = {
       },
       colors:{
         'azulbarra':'rgb(15, 123, 212);'
+      },
+      gridTemplateColumns:{
+        '70-30':'70% 30%'
       }
     },
   },

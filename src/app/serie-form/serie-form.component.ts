@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SerieService } from '../serie/serie.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Serie } from '../interfaces/serie.interfaces';
+import { Serie, Genero } from '../interfaces/serie.interfaces';
 
 @Component({
   selector: 'app-serie-form',
@@ -14,6 +14,7 @@ export class SerieFormComponent implements OnInit {
   errors: string[] = [];
   serie?: Serie;
   form?: FormGroup;
+  generos = Object.values(Genero);
 
 
   constructor(
@@ -36,6 +37,11 @@ export class SerieFormComponent implements OnInit {
             nombreSerie: [serie.titulo, [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
             sinopsis:[serie.sinopsis, [Validators.required, Validators.minLength(10), Validators.maxLength(2000)]],
             genero: [serie.genero, [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
+            popularidad:[serie.popularidad, [Validators.required, Validators.min(0)]],
+            numTemporadas:[serie.numTemporadas, [Validators.required, Validators.min(0)]],
+            numEpisodiosTotal:[serie.numEpisodiosTotal,[Validators.required, Validators.min(0)]],
+            videoKey:[serie.videoKey,[Validators.required]],
+            plataforma:[serie.plataforma,[Validators.required]]
           });
 
         });
