@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Serie, SeriePage } from '../interfaces/serie.interfaces';
+import { Serie, SeriePage } from '../../../interfaces/serie.interfaces';
 import { SerieService } from './serie.service';
 
 @Component({

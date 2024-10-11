@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SerieService } from '../serie/serie.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Serie, Genero } from '../interfaces/serie.interfaces';
+import { Serie, Genero } from '../../../interfaces/serie.interfaces';
 
 @Component({
   selector: 'app-serie-form',
@@ -76,7 +76,7 @@ export class SerieFormComponent implements OnInit {
 
     request.subscribe({
       next: (serie: Serie) => {
-        this.router.navigate(['series'])
+        this.router.navigate(['/admin/series'])
       },
       error: (error: any) => {
          console.log("Error:", error); // <-- Agregar este console.log para ver el error en detalle

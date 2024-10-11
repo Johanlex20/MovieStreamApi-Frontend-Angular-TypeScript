@@ -7,7 +7,7 @@
     <div class="h-full flex flex-col justify-start">
         <div class="mb-5">
             <button class="bg-blue-900 p-3 rounded-3xl text-white font-bold text-base hover:bg-sky-600"
-                routerLink="/new/serie">NUEVA SERIE
+                routerLink="/admin/new/serie">NUEVA SERIE
             </button>
         </div>
         <div class="overflow-x-auto border-2 border-none rounded-lg justify-center ">
@@ -65,7 +65,7 @@
 
                             <div class="col-[3] row-[2] place-content-center inline-grid items-center">
                                 <h2
-                                    class="bg-blue-700 w-fit min-w-6 px-2 rounded-lg border-none text-white font-extrabold">
+                                    class="bg-blue-700 w-fit min-w-6 px-2 hover:p-[8.1px] rounded-lg border-none text-white font-extrabold">
                                     {{serie.numEpisodiosTotal}}</h2>
                             </div>
                         </td>
@@ -94,7 +94,7 @@
                                 <span title="Eliminar" class="material-icons">delete</span>
                             </button>
 
-                            <button [routerLink]="['/serie/', serie.id, 'edit']"
+                            <button [routerLink]="['/admin/serie/', serie.id, 'edit']"
                             class=" flex items-center text-green-600 font-bold text-base p-1 hover:text-green-200 hover:bg-green-600 rounded-full duration-500">
                             <span title="Editar" class="material-icons">edit</span>
                         </button>

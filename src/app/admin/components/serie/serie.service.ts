@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Serie, SeriePage } from '../interfaces/serie.interfaces';
+import { Serie, SeriePage } from '../../../interfaces/serie.interfaces';
 
 @Injectable({
   providedIn: 'root'
