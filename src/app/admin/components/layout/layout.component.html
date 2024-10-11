@@ -1,0 +1,30 @@
+<nav class="bg-gray-600 py-2">
+    <div class="container mx-auto flex items-center justify-between px-8 xl:px-0">
+        
+        <div class="flex flex-grow items-center">
+            <img class="w-10" src="assets/img/logoGood.png" alt="">    
+        </div>
+
+       <div class="flex lg:hidden">
+        <span class="material-symbols-outlined text-white" (click)="openMenu()">
+            {{!menuVisible ? 'menu':'close'}}
+        </span>
+       </div>
+
+        <div id="menu" [ngClass]="{'hidden': !menuVisible, 'fixed': menuVisible}" class=" hidde z-50 flex-grow justify-between lg:flex absolute lg:relative lg:top-0 top-12 left-0 bg-gray-600 w-full lg:w-auto items-center py-14 lg:py-0 px-8 sm:px-24 lg:px-0">
+            <div class="flex flex-col lg:flex-row mb-8 lg:mb-0 font-bold text-xl">
+                <a href="#" class="text-white lg:mr-7 mb-8 lg:mb-0 hover:text-sky-600 transition duration-500 ease-in-out">Inicio</a>
+                <a href="#" class="text-white lg:mr-7 mb-8 lg:mb-0 hover:text-sky-600 transition duration-500 ease-in-out">Series</a>
+                <a href="#" class="text-white lg:mr-7 mb-8 lg:mb-0 hover:text-sky-600 transition duration-500 ease-in-out">Contacto</a>
+            </div>
+            <div class="flex flex-col lg:flex-row text-center font-bold ">
+                <a href="" class="text-white font-bold border border-white py-2 px-5 rounded-md hover:bg-white hover:text-gray-800 transition duration-500 ease-in-out lg:mr-4 mb-8 lg:mb-0">Iniciar sesión</a>
+                <a href="" class="text-white font-bold bg-sky-900 border border-sky-900 py-2 px-5 rounded-md hover:bg-sky-600 hover:border-sky-600 transition duration-500 ease-in-out">Registrate</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div>
+    <router-outlet></router-outlet>
+</div>
