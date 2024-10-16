@@ -9,13 +9,29 @@
             disfruta.</p>
 
         <div class="w-full relative mb-8">
-            <form action="">
-                <input type="text" class="w-full py-2 px-4 rounded-3xl border-none" placeholder="Busca una serie">
-                <button type="button"
+            <form (ngSubmit)="buscarSerie()" #serieForm="ngForm">
+                <input 
+                name="titulo"
+                [(ngModel)]="titulo"
+                id="titulo"
+                type="text" 
+                class="w-full py-2 px-4 rounded-3xl border-none text-gray-800" 
+                placeholder="Busca una serie"
+                required>
+                
+                <button type="submit"
                     class="absolute  right-0  py-2 px-5 rounded-3xl bg-sky-900 border-sky-900 hover:bg-sky-600 hover:border-sky-600 transition duration-500 ease-in-out">
                     Buscar
                 </button>
             </form>
+
+            <!-- Mostrar errores si existen -->
+            <div *ngIf="errors.length > 0" class="mt-4">
+                <div *ngFor="let error of errors" class="text-red-500">
+                    {{ error }}
+                </div>
+            </div>
+
         </div>
 
         <div class="flex justify-end">

@@ -2,6 +2,7 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 import { Serie } from 'src/app/interfaces/serie.interfaces';
 import { SerieService } from '../../serie.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -19,10 +20,15 @@ export class IndexComponent implements OnInit{
   isModalOpen = false;
   selectedVideoKey: string | null = null;
 
+  titulo: string = '';
+  errors: string[] = [];
+
+
   constructor(
     private serieService:SerieService,
     public sanitizer:DomSanitizer,
-    private render: Renderer2
+    private render: Renderer2,
+    private router: Router
   ){}
 
   ngOnInit(): void {
@@ -61,5 +67,28 @@ export class IndexComponent implements OnInit{
     //Activar Scroll del body
     this.render.removeClass(document.body, 'overflow-hidden');
   }
+
+   buscarSerie() {
+    this.serieService.buscarSerie(this.titulo).subscribe(
+      (result) => {
+        this.series = result; // Guardar los resultados de la búsqueda
+          alert('serie encontrada');
+          this.router.navigate(['/admin/series']);
+          console.log(this.series);
+      },
+      (error:any)=>{
+        if (error.error.status === 400) {
+          this.errors.push(error.error.detail);
+        } else if (error.error.status === 422) {
+          this.errors.push(...error.error.errors);
+        } else if (error.error.status === 404) {
+          this.errors.push(error.error.title);
+        } else if (error.error.status === 500 || 502) {
+          this.errors.push(error.error.title);
+        }
+      }
+    );
+  }
+
 
 }
