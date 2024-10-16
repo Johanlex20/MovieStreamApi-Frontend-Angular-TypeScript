@@ -13,6 +13,7 @@ export interface SeriePage {
 }
 
 export interface Serie {
+    content: Serie[] | undefined;
     id:                    number;
     idSerie:               number;
     titulo:                string;

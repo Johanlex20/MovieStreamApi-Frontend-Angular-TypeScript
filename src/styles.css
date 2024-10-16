@@ -6,60 +6,15 @@
   :root{
       --color1:rgb(15, 123, 212);
   }
-  /*.contenedor {
-    background-color: #fff;
-    height: 60px;
-    width: 60px;
-    position: relative;
-    border-radius: 5px;
-    margin: 2px;
-    border-radius: 50%;
-  }
-  .svg {
-    position: absolute;
-    transform: translate(-50%, -50%);
-    height: 100%;
-    width: 100%;
-    left: 50%;
-    top: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .box_percentage {
-    height: auto;
-    width: 100%;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    top: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  
-  .percentage {
-    font-family: sans-serif;
-    font-weight: bold;
-    font-size: 1em;
-    color:var(--color1);
-  }
-*/
-.progress2{
  
-fill: none;
-stroke-width: 5;
-stroke: rgb(233, 233, 233);
-
+.progress2{
+  fill: none;
+  stroke-width: 5;
+  stroke: rgb(233, 233, 233);
 }
   .progress {
     fill: none;
     stroke-width: 5;
-    /*stroke: var(--color1);
-    transform: rotate(-90deg);
-    transform-origin: center;
-    stroke-linecap: round;*/
     stroke-dasharray: 157;
     stroke-dashoffset: 157;  /*indicativo de progreso*/
     transition: .3s;

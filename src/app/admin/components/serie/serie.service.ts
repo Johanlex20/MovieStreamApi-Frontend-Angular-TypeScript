@@ -30,5 +30,4 @@ export class SerieService {
   delete(serie:Serie){
     return this.http.delete(`http://localhost:8080/api/series/${serie.id}`);
   }
-
 }

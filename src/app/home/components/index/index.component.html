@@ -1,0 +1,85 @@
+<section class="w-full p-5 h-96 bg-cover bg-center relative flex flex-col items-center justify-center"
+    [ngStyle]="{'background-image':'url('+ imagenBgUrl +')'}">
+    <!-- Overlay oscuro -->
+    <div class="absolute inset-0 bg-black/50 "></div>
+
+    <div class="ml-5 text-white font-bold relative">
+        <h1 class="text-5xl md:text-7xl mb-4">Bienvenido<span>.</span></h1>
+        <p class="text-2xl md:text-4xl mb-8"> Todas las series que necesitas en un solo lugar, explora descubre y
+            disfruta.</p>
+
+        <div class="w-full relative mb-8">
+            <form action="">
+                <input type="text" class="w-full py-2 px-4 rounded-3xl border-none" placeholder="Busca una serie">
+                <button type="button"
+                    class="absolute  right-0  py-2 px-5 rounded-3xl bg-sky-900 border-sky-900 hover:bg-sky-600 hover:border-sky-600 transition duration-500 ease-in-out">
+                    Buscar
+                </button>
+            </form>
+        </div>
+
+        <div class="flex justify-end">
+            <h2 class="text-3xl">GOOD COMPANY</h2>
+        </div>
+    </div>
+</section>
+
+<section class="w-full p-5">
+    <div>
+        <h1 class="font-bold text-2xl ml-5">SERIES TOP</h1>
+        <app-card></app-card>
+    </div>
+</section>
+
+<!-- SECCION PARA GENEROS CON REPRODUCION DE VIDEO -->
+
+<section class="w-full h-auto bg-cover bg-center relative"
+    [ngStyle]="{'background-image':'url('+ imagenBgGeneroUrl +')'}">
+    <!-- Overlay oscuro -->
+    <div class="absolute inset-0 bg-violet-900/50 "></div>
+
+    <div class="relative p-5 h-full text-white font-bold">
+        <div class="md:flex mb-4">
+            <h1 class=" flex items-center text-2xl mb-5 md:mb-0 md:mx-5">ULTIMOS TRAILERS</h1>
+        </div>
+
+        <div class="block md:flex justify-center">
+            <div *ngFor="let serie of series">
+                <div class="flex justify-center p-3 relative">
+                   
+                    <button (click)="openModal(serie.videoKey)" class="group block relative">
+                        <img [src]="'http://localhost:8080/api/media/image?poster=%2F' + serie.poster"
+                          alt="{{serie.titulo}}"
+                          class="mb-5 md:m-0 rounded-xl shadow-lg shadow-violet-400 group-hover:brightness-50">
+                      
+                        <!-- Ícono de "Play" -->
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="material-icons text-white text-9xl">play_circle_filled</span>
+                        </div>
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal de Video -->
+<div *ngIf="isModalOpen"
+    (click)="closeModal()"
+    class="fixed inset-0 bg-black/70 z-50 flex items-center justify-center">
+    <div class="relative bg-black rounded-lg shadow-lg max-w-3xl w-full pb-10 p-5" (click)="$event.stopPropagation()">
+        
+        <button (click)="closeModal()" class="absolute bottom-0 right-1/2 text-gray-600 hover:text-black text-5xl">&times;</button>
+
+        <div class="relative w-full pb-[56.25%]">
+            <iframe
+                [src]="sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + selectedVideoKey)"
+                class="absolute top-0 left-0 w-full h-full"
+                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+</div>
+
+
