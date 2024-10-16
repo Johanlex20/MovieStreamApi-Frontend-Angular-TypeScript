@@ -21,4 +21,8 @@ export class HomeService {
     return this.http.get<Serie[]>(`http://localhost:8080/api/home/series/titulo`, { params }); // Usar los parámetros
   }
 
+  buscarSerieById(id:number){
+    return this.http.get<Serie>(`http://localhost:8080/api/series/${id}`);
+  }
+
 }

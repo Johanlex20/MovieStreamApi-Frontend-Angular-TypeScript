@@ -71,9 +71,10 @@ export class IndexComponent implements OnInit{
    buscarSerie() {
     this.homeService.buscarSerie(this.titulo).subscribe(
       (result) => {
+        const serie = result[0]; // tomar la primera concidencia para obtner el id y poder enrutar a la pestalla de perfilSerie
         this.series = result; // Guardar los resultados de la búsqueda
           alert('serie encontrada');
-          this.router.navigate(['/admin/series']);
+          this.router.navigate(['/home/serie/' + serie.id ]);
           console.log(this.series);
       },
       (error:any)=>{

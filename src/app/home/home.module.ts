@@ -5,6 +5,7 @@ import { IndexComponent } from './components/index/index.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { FormsModule } from '@angular/forms';
+import { SeriePerfilComponent } from './components/serie-perfil/serie-perfil.component';
 
 
 
@@ -12,7 +13,8 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     CardComponent,
     IndexComponent,
-    LayoutComponent
+    LayoutComponent,
+    SeriePerfilComponent
   ],
   imports: [
     CommonModule,
