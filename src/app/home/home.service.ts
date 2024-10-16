@@ -1,13 +1,12 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Serie } from '../interfaces/serie.interfaces';
-import { Observable } from 'rxjs';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class SerieService {
+export class HomeService {
 
   constructor(
     private http:HttpClient

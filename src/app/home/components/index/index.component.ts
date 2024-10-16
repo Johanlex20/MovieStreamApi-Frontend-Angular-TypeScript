@@ -1,6 +1,6 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { Serie } from 'src/app/interfaces/serie.interfaces';
-import { SerieService } from '../../serie.service';
+import { HomeService } from '../../home.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
@@ -25,7 +25,7 @@ export class IndexComponent implements OnInit{
 
 
   constructor(
-    private serieService:SerieService,
+    private homeService:HomeService,
     public sanitizer:DomSanitizer,
     private render: Renderer2,
     private router: Router
@@ -36,7 +36,7 @@ export class IndexComponent implements OnInit{
   }
 
   cargarSeries(){
-    this.serieService.listSerie()
+    this.homeService.listSerie()
     .subscribe(series =>{
       this.series = this.obtenerAleatorio(series).slice(0,4);
     });
@@ -69,7 +69,7 @@ export class IndexComponent implements OnInit{
   }
 
    buscarSerie() {
-    this.serieService.buscarSerie(this.titulo).subscribe(
+    this.homeService.buscarSerie(this.titulo).subscribe(
       (result) => {
         this.series = result; // Guardar los resultados de la búsqueda
           alert('serie encontrada');

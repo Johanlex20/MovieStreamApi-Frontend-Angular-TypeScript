@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Serie } from 'src/app/interfaces/serie.interfaces';
-import { SerieService } from '../../serie.service';
+import { HomeService} from '../../home.service';
 
 @Component({
   selector: 'app-card',
@@ -12,7 +12,7 @@ export class CardComponent implements OnInit{
   series?:Serie[];
   
   constructor(
-    private serieService:SerieService){
+    private homeService:HomeService){
   }
 
   ngOnInit(): void {
@@ -21,7 +21,7 @@ export class CardComponent implements OnInit{
   }
 
   cargarSeries() {
-     this.serieService.listSerie()
+     this.homeService.listSerie()
      .subscribe(series =>{
       this.series = series;
       console.log(this.series);
