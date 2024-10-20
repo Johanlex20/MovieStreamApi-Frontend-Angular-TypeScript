@@ -1,0 +1,35 @@
+<div *ngFor="let temporada of temporadas"> 
+    <div class="p-4 h-auto w-full border border-b-2 border-gray-100">
+        <div class="md:flex w-full">
+             <div class="">
+                 <img  class="w-[300px] rounded-md shadow-sm shadow-gray-500" [src]= "temporada?.posterTemporada
+                  ? 'http://localhost:8080/api/media/image?poster=%2F' + temporada.posterTemporada 
+                  : 'https://media.istockphoto.com/id/2157299607/es/foto/se%C3%B1al-roja-de-advertencia-sobre-caja-de-cart%C3%B3n-seguridad-y-protecci%C3%B3n-en-las-l%C3%ADneas-de.jpg?s=2048x2048&w=is&k=20&c=xYjlW3Dhee2wClmDeiLeTr6-ZVgr3WRzyicTiQ3J6Vo='">
+                
+                 <!-- Mostrar mensajes de error si no hay imagen o poster -->
+                 <img *ngIf="!temporada.posterTemporada" [src]="" class="w-[300px] rounded-md shadow-sm shadow-gray-500" >
+             </div>
+             <div class="w-full md:ml-5">
+ 
+                 <div class="mb-5">
+                     <a href="" class="text-3xl font-bold text-gray-700 hover:text-gray-400">
+                         {{temporada.nombreTemporada}}
+                     </a>
+                 </div>
+                     
+                 <div class=" text-base font-bold w-full">
+                     <div class="flex border border-white bg-sky-900 rounded-lg px-3 py-1 w-fit mb-3 lg:mx-0 ">
+                         <span class="material-icons flex items-center text-white">grade</span>
+                         <span class=" text-white">{{porcentajeTemporada(temporada.promedioTemporada)}}%</span>
+                     </div>
+                     <div>
+                         <h1 class="text-gray-600">Emisión: {{temporada.fechaEstrenoTemporada | date:'YYYY'}}</h1>
+                         <h1 class="text-gray-600 mb-3"> {{temporada.episodios.length}} Episodios</h1>
+                         <p>{{temporada.sinopsisTemporada}}</p>
+                     </div>
+                 </div>
+                 
+             </div>
+        </div>
+     </div>
+</div>

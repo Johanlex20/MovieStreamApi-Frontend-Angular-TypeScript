@@ -11,7 +11,7 @@ import { ActivatedRoute} from '@angular/router';
 export class SeriePerfilComponent implements OnInit{
 
   serie?:Serie;
-
+ 
   constructor(
     private homeService:HomeService,
     private route:ActivatedRoute
@@ -28,9 +28,16 @@ export class SeriePerfilComponent implements OnInit{
           this.serie = serie;
         });
     }
-
-
   }
   
+  get porcentaje():number{
+    return this.serie ? Math.floor( this.serie.promedioVotos*10) :0;
+  }
+
+
+
+
+ 
+
 
 }

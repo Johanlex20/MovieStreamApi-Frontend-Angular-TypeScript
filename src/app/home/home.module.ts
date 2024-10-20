@@ -6,6 +6,8 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { FormsModule } from '@angular/forms';
 import { SeriePerfilComponent } from './components/serie-perfil/serie-perfil.component';
+import { TemporadaComponent } from './components/temporada/temporada.component';
+
 
 
 
@@ -14,7 +16,8 @@ import { SeriePerfilComponent } from './components/serie-perfil/serie-perfil.com
     CardComponent,
     IndexComponent,
     LayoutComponent,
-    SeriePerfilComponent
+    SeriePerfilComponent,
+    TemporadaComponent
   ],
   imports: [
     CommonModule,

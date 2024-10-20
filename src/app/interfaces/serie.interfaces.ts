@@ -27,6 +27,37 @@ export interface Serie {
     tituloVideo:           string;
     fechaLanzamientoSerie: Date;
     plataforma:            string;
+    promedioVotos:         number;
+}
+
+export interface Temporada { 
+    id:                    number;
+    idTemporada:           number;
+    nombreTemporada:       string;
+    fechaEstrenoTemporada: Date;
+    sinopsisTemporada:     string;
+    posterTemporada:       string;
+    numeroTemporada:       number;
+    promedioTemporada:     number;
+    tituloSerie:           string;
+    episodios:             Episodio[];
+    videoKey:              string;
+    tituloVideo:           string;
+}
+
+export interface Episodio {
+    id:               number;
+    numEpisodio:      number;
+    tituloEpisodio:   string;
+    fechaEstreno:     Date;
+    sinopsisEpisodio: string;
+    idEpisodio:       number;
+    numTemporada:     number;
+    portadaEpisodio:  string;
+    promedio:         number;
+    tituloSerie:      string;
+    videoKey:         null;
+    tituloVideo:      null;
 }
 
 export enum Genero {
