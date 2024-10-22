@@ -16,7 +16,6 @@ export class TemporadaPerfilComponent implements OnInit{
   constructor(
     private homeService:HomeService,
     private route:ActivatedRoute,
-    private router:Router
   ){}
 
   episodio?:Episodio[];
@@ -29,10 +28,10 @@ export class TemporadaPerfilComponent implements OnInit{
       this.homeService.buscarTemporadaById(parseInt(temporadaId))
         .subscribe(temporada => {
           this.temporada = temporada;
-          console.log(temporada);
-
+          //console.log(temporada);
+        
           this.episodio = temporada.episodios;
-      
+          //console.log(this.episodio)
           if(temporada.nombreTemporada){
             this.buscarSerie(temporada.tituloSerie);
           }

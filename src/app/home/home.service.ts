@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Serie, Temporada } from '../interfaces/serie.interfaces';
+import { Episodio, Serie, Temporada } from '../interfaces/serie.interfaces';
 
 
 @Injectable({
@@ -37,5 +37,9 @@ export class HomeService {
     buscarTemporadaById(id:number){
       return this.http.get<Temporada>(`http://localhost:8080/api/temporada/${id}`);
     }
+
+  buscarEpisodioById(id:number){
+    return this.http.get<Episodio>(`http://localhost:8080/api/episodio/${id}`);
+  }
 
 }

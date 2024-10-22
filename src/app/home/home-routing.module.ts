@@ -5,6 +5,7 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { SeriePerfilComponent } from './components/serie-perfil/serie-perfil.component';
 import { TemporadaComponent } from './components/temporada/temporada.component';
 import { TemporadaPerfilComponent } from './components/temporada-perfil/temporada-perfil.component';
+import { EpisodioPerfilComponent } from './components/episodio-perfil/episodio-perfil.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
       { 
         path:'temporada/:id',
         component:TemporadaPerfilComponent
+      },
+      {
+        path:'episodio/:id',
+        component:EpisodioPerfilComponent
       }
     ]
   }

@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { SeriePerfilComponent } from './components/serie-perfil/serie-perfil.component';
 import { TemporadaComponent } from './components/temporada/temporada.component';
 import { TemporadaPerfilComponent } from './components/temporada-perfil/temporada-perfil.component';
+import { EpisodioPerfilComponent } from './components/episodio-perfil/episodio-perfil.component';
 
 
 
@@ -19,7 +20,8 @@ import { TemporadaPerfilComponent } from './components/temporada-perfil/temporad
     LayoutComponent,
     SeriePerfilComponent,
     TemporadaComponent,
-    TemporadaPerfilComponent
+    TemporadaPerfilComponent,
+    EpisodioPerfilComponent
   ],
   imports: [
     CommonModule,
