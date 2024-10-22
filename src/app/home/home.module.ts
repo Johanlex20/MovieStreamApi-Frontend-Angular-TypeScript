@@ -9,6 +9,7 @@ import { SeriePerfilComponent } from './components/serie-perfil/serie-perfil.com
 import { TemporadaComponent } from './components/temporada/temporada.component';
 import { TemporadaPerfilComponent } from './components/temporada-perfil/temporada-perfil.component';
 import { EpisodioPerfilComponent } from './components/episodio-perfil/episodio-perfil.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 
@@ -21,7 +22,8 @@ import { EpisodioPerfilComponent } from './components/episodio-perfil/episodio-p
     SeriePerfilComponent,
     TemporadaComponent,
     TemporadaPerfilComponent,
-    EpisodioPerfilComponent
+    EpisodioPerfilComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,

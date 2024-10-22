@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { IndexComponent } from './components/index/index.component';
 import { LayoutComponent } from './components/layout/layout.component';
@@ -6,6 +6,7 @@ import { SeriePerfilComponent } from './components/serie-perfil/serie-perfil.com
 import { TemporadaComponent } from './components/temporada/temporada.component';
 import { TemporadaPerfilComponent } from './components/temporada-perfil/temporada-perfil.component';
 import { EpisodioPerfilComponent } from './components/episodio-perfil/episodio-perfil.component';
+
 
 const routes: Routes = [
   {
