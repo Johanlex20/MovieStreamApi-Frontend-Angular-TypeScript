@@ -1,8 +1,9 @@
 <div *ngFor="let temporada of temporadas"> 
     <div class="p-4 h-auto w-full border border-b-2 border-gray-100">
         <div class="md:flex w-full">
-             <div class="">
-                 <img  class="w-[300px] rounded-md shadow-sm shadow-gray-500" [src]= "temporada?.posterTemporada
+             
+            <div class="">
+                 <img class="w-[300px] rounded-md shadow-sm shadow-gray-500" [src]= "temporada?.posterTemporada
                   ? 'http://localhost:8080/api/media/image?poster=%2F' + temporada.posterTemporada 
                   : 'https://media.istockphoto.com/id/2157299607/es/foto/se%C3%B1al-roja-de-advertencia-sobre-caja-de-cart%C3%B3n-seguridad-y-protecci%C3%B3n-en-las-l%C3%ADneas-de.jpg?s=2048x2048&w=is&k=20&c=xYjlW3Dhee2wClmDeiLeTr6-ZVgr3WRzyicTiQ3J6Vo='">
                 
@@ -10,9 +11,9 @@
                  <img *ngIf="!temporada.posterTemporada" [src]="" class="w-[300px] rounded-md shadow-sm shadow-gray-500" >
              </div>
              <div class="w-full md:ml-5">
- 
+
                  <div class="mb-5">
-                     <a href="" class="text-3xl font-bold text-gray-700 hover:text-gray-400">
+                     <a [routerLink]="['/home/temporada', temporada.id]" class="text-3xl font-bold text-gray-700 hover:text-gray-400">
                          {{temporada.nombreTemporada}}
                      </a>
                  </div>
@@ -28,8 +29,8 @@
                          <p>{{temporada.sinopsisTemporada}}</p>
                      </div>
                  </div>
-                 
              </div>
+            
         </div>
      </div>
 </div>

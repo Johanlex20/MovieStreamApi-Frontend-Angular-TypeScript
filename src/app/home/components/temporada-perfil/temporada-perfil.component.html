@@ -1,0 +1,120 @@
+<section id="t" *ngIf="temporada" class="relative">
+    <div class="md:flex  items-center p-4 md:p-8 md:h-[750px]" [ngStyle]="{
+        'background-image':'url(' + ('http://localhost:8080/api/media/image?poster=%2F' + temporada.posterTemporada) + ')',
+        'background-size':'cover',
+        'background-position':'center'
+        }">
+
+        <div class="absolute inset-0 bg-slate-800 opacity-50"></div>
+
+        <div class="flex justify-center items-center relative">
+            <img [src]="'http://localhost:8080/api/media/image?poster=%2F' + temporada.posterTemporada" alt=""
+                class="md:w-[450px] w-[350px] rounded-md shadow-sm shadow-gray-500">
+        </div>
+        <div class="text-white md:pl-8 md:w-4/5 h-full mt-8 md:mt-0 flex flex-col justify-center relative">
+            <div class="mb-8 ">
+                <h1 class="titulo">{{temporada.nombreTemporada}}</h1>
+                <h3 class="text-xl font-bold mb-5"><span
+                        class="text-2xl font-bold border border-solid p-1 mr-3">GENERO</span></h3>
+                <h1 class="text-5xl ">({{temporada.fechaEstrenoTemporada | date:'YYYY'}})</h1>
+            </div>
+            <div class="mb-8 text-black text-6xl flex">
+                <div class="flex items-center justify-center">
+                    <span class="material-icons icon-redondo" title="Guardar">bookmark</span>
+                </div>
+                <div class="flex items-center justify-center">
+                    <span class="material-icons icon-redondo" title="Listar">format_list_bulleted</span>
+                </div>
+                <div class="flex items-center justify-center">
+                    <span class="material-icons icon-redondo" title="Agregar">favorite</span>
+                </div>
+                <div class="flex items-center justify-center">
+                    <span class="material-icons icon-redondo" title="Reproducir">play_arrow</span>
+                </div>
+            </div>
+            <div>
+                <h2 class="text-4xl font-bold mb-5">Sinopsis</h2>
+                <p class="text-lg">{{temporada.sinopsisTemporada}}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!--SECCION TEMPORADAS SERIE-->
+<section *ngIf="serie && temporada">
+    <div class="p-4 h-auto border border-b-2 border-gray-100 flex w-full ">
+       <div class="flex w-full">
+            <div class="">
+                <img [src]="'http://localhost:8080/api/media/image?poster=%2F' + temporada.posterTemporada" alt="" class="w-[100px] rounded-md shadow-sm shadow-gray-500">
+            </div>
+            <div class="w-full ml-5">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold mb-1 mr-2">Temporadas</h1> 
+                    <h1 class="text-2xl sm:ml-3 text-gray-600">({{temporada.fechaEstrenoTemporada | date:'YYYY'}})</h1>
+                </div>
+                <a [href]="'http://localhost:4200/home/serie/'+ serie.id +'#s'" class="flex items-center text-xl font-bold text-gray-600 hover:text-gray-400">
+                    <span class="material-symbols-outlined text-base font-bold mr-1 flex justify-center"> arrow_back</span>Regresa a Serie
+                </a>
+            </div>
+       </div>
+    </div>
+</section>
+
+
+
+<div *ngFor="let episodio of episodio"> 
+    <div class="p-4 h-auto w-full border border-b-2 border-gray-100">
+        <div class="md:flex w-full">
+             
+            <div class="">
+                 <img class="w-[300px] rounded-md shadow-sm shadow-gray-500" [src]= "episodio.portadaEpisodio
+                  ? 'http://localhost:8080/api/media/image?poster=%2F' + episodio.portadaEpisodio
+                  : 'https://media.istockphoto.com/id/2157299607/es/foto/se%C3%B1al-roja-de-advertencia-sobre-caja-de-cart%C3%B3n-seguridad-y-protecci%C3%B3n-en-las-l%C3%ADneas-de.jpg?s=2048x2048&w=is&k=20&c=xYjlW3Dhee2wClmDeiLeTr6-ZVgr3WRzyicTiQ3J6Vo='">
+                
+                 <!-- Mostrar mensajes de error si no hay imagen o poster -->
+                 <img *ngIf="!episodio.portadaEpisodio" [src]="" class="w-[300px] rounded-md shadow-sm shadow-gray-500" >
+             </div>
+             <div class="w-full md:ml-5">
+
+                 <div class="mb-5">
+                     <a [routerLink]="['/home/episodio', episodio.id]" class="text-3xl font-bold text-gray-700 hover:text-gray-400">
+                         {{episodio.tituloEpisodio}}
+                     </a>
+                 </div>
+                     
+                 <div class=" text-base font-bold w-full">
+                     <div class="flex border border-white bg-sky-900 rounded-lg px-3 py-1 w-fit mb-3 lg:mx-0 ">
+                         <span class="material-icons flex items-center text-white">grade</span>
+                         <span class=" text-white">{{porcentajeEpisodio(episodio.promedio)}}%</span>
+                     </div>
+                     <div>
+                         <h1 class="text-gray-600">Emisión: {{episodio.fechaEstreno| date:'YYYY'}}</h1>
+                         <h1 class="text-gray-600 mb-3">Episodio {{episodio.numEpisodio}}</h1>
+                         <p>{{episodio.sinopsisEpisodio}}</p>
+                     </div>
+                 </div>
+             </div>
+            
+        </div>
+     </div>
+</div>
+<!--SECCION TEMPORADAS SERIE-->
+<section *ngIf="temporada">
+    <div class="p-4 h-auto border border-b-2 border-gray-100 flex w-full ">
+       <div class="flex w-full">
+            <div class="">
+                <img [src]="'http://localhost:8080/api/media/image?poster=%2F' + temporada.posterTemporada" alt="" class="w-[100px] rounded-md shadow-sm shadow-gray-500">
+            </div>
+            <div class="w-full ml-5">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold mb-1 mr-2">Temporadas</h1> 
+                    <h1 class="text-2xl sm:ml-3 text-gray-600">({{temporada.fechaEstrenoTemporada | date:'YYYY'}})</h1>
+                </div>
+                <a [href]="'http://localhost:4200/home/temporada/'+ temporada.id +'#t'" class="flex items-center text-xl font-bold text-gray-600 hover:text-gray-400">
+                    <span class="material-symbols-outlined text-base font-bold mr-1 flex justify-center"> arrow_back</span>Regresa a Temporada
+                </a>
+            </div>
+       </div>
+    </div>
+</section>

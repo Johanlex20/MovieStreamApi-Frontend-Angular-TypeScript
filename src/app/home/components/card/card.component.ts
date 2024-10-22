@@ -17,14 +17,14 @@ export class CardComponent implements OnInit{
 
   ngOnInit(): void {
     this.cargarSeries();
-    console.log(this.series);
+    //console.log(this.series);
   }
 
   cargarSeries() {
      this.homeService.listSerie()
      .subscribe(series =>{
       this.series = series;
-      console.log(this.series);
+      //console.log(this.series);
      });
      
   }

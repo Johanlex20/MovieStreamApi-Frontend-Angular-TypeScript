@@ -34,10 +34,9 @@ export class TemporadaComponent implements OnInit {
               }));
 
               this.temporadas.forEach(temporada => {
-                this.homeService.buscarTemporadaById(serie.titulo, temporada.numeroTemporada)
+                this.homeService.buscarTemporadaById(temporada.id)
                   .subscribe((episodiosTemporada: Temporada) => {
                     temporada.episodios = episodiosTemporada.episodios;
-                    //console.log(temporada);
                   });
               });
 

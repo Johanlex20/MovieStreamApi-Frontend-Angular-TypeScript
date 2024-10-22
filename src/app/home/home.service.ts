@@ -29,10 +29,13 @@ export class HomeService {
     return this.http.get<Temporada[]>(`http://localhost:8080/api/temporada/temporadas/${titulo}`);
   }
 
-  buscarTemporadaById(titulo:string, numeroTemporada:number){
+  buscarTemporadaByIdAndTitle(titulo:string, numeroTemporada:number){
     const params = new HttpParams().set('titulo', titulo).set('numeroTemporada', numeroTemporada);
     return this.http.get<Temporada>(`http://localhost:8080/api/temporada/temporadaId`, {params} );
     }
-    
+   
+    buscarTemporadaById(id:number){
+      return this.http.get<Temporada>(`http://localhost:8080/api/temporada/${id}`);
+    }
 
 }

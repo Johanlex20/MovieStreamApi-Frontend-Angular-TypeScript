@@ -7,6 +7,7 @@ import { HomeRoutingModule } from './home-routing.module';
 import { FormsModule } from '@angular/forms';
 import { SeriePerfilComponent } from './components/serie-perfil/serie-perfil.component';
 import { TemporadaComponent } from './components/temporada/temporada.component';
+import { TemporadaPerfilComponent } from './components/temporada-perfil/temporada-perfil.component';
 
 
 
@@ -17,7 +18,8 @@ import { TemporadaComponent } from './components/temporada/temporada.component';
     IndexComponent,
     LayoutComponent,
     SeriePerfilComponent,
-    TemporadaComponent
+    TemporadaComponent,
+    TemporadaPerfilComponent
   ],
   imports: [
     CommonModule,

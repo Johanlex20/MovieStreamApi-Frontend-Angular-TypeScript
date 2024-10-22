@@ -24,7 +24,7 @@ export class SeriePerfilComponent implements OnInit{
     if(serieId){
       this.homeService.buscarSerieById(parseInt(serieId))
         .subscribe(serie =>{
-          console.log('serie', serie);
+          //console.log('serie', serie);
           this.serie = serie;
         });
     }
