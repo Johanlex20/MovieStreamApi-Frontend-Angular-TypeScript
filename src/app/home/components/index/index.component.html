@@ -43,12 +43,11 @@
 <section class="w-full p-5">
     <div>
         <h1 class="font-bold text-2xl ml-5">SERIES TOP</h1>
-        <app-card></app-card>
+        <app-card [series]="series"></app-card>
     </div>
 </section>
 
-<!-- SECCION PARA GENEROS CON REPRODUCION DE VIDEO -->
-
+<!-- SECCION REPRODUCION DE VIDEO -->
 <section class="w-full h-auto bg-cover bg-center relative"
     [ngStyle]="{'background-image':'url('+ imagenBgGeneroUrl +')'}">
     <!-- Overlay oscuro -->
@@ -60,7 +59,7 @@
         </div>
 
         <div class="block md:flex justify-center">
-            <div *ngFor="let serie of series">
+            <div *ngFor="let serie of seriesAleatorias">
                 <div class="flex justify-center p-3 relative">
                    
                     <button (click)="openModal(serie.videoKey)" class="group block relative">
@@ -97,5 +96,12 @@
         </div>
     </div>
 </div>
+
+<!-- Generar secciones dinámicamente por género -->
+<section *ngFor="let genero of generos" class="w-full p-5">
+    <h1 class="font-bold text-4xl ml-5">{{ genero }}</h1>
+    <app-card [series]="seriesPorGenero[genero]"></app-card>
+</section>
+
 
 

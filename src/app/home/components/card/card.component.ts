@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Serie } from 'src/app/interfaces/serie.interfaces';
 import { HomeService} from '../../home.service';
 
@@ -7,28 +7,9 @@ import { HomeService} from '../../home.service';
   templateUrl: './card.component.html',
   styleUrls: []
 })
-export class CardComponent implements OnInit{
+export class CardComponent{
 
-  series?:Serie[];
+  @Input() series:Serie[] =[];
   
-  constructor(
-    private homeService:HomeService){
-  }
-
-  ngOnInit(): void {
-    this.cargarSeries();
-    //console.log(this.series);
-  }
-
-  cargarSeries() {
-     this.homeService.listSerie()
-     .subscribe(series =>{
-      this.series = series;
-      //console.log(this.series);
-     });
-     
-  }
-
-  
-
+ 
 }

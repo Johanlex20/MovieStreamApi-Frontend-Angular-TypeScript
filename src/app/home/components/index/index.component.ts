@@ -1,5 +1,5 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
-import { Serie } from 'src/app/interfaces/serie.interfaces';
+import { Genero, Serie } from 'src/app/interfaces/serie.interfaces';
 import { HomeService } from '../../home.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
@@ -12,7 +12,10 @@ import { Router } from '@angular/router';
 })
 export class IndexComponent implements OnInit{
 
-  series?:Serie[];
+  series:Serie[] =[];
+  seriesAleatorias?: Serie[];
+  generos = [Genero.Drama, Genero.Accion, Genero.Comedia, Genero.Crime, Genero.Animacion]; // Agrega más géneros aquí si quieres
+  seriesPorGenero: { [key: string]: Serie[] } = {}; // Almacena las series por género
 
   imagenBgUrl = 'https://images.unsplash.com/photo-1658999167159-3f6659cace61?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
   imagenBgGeneroUrl = 'https://images.unsplash.com/photo-1656310737995-758afc2c7ea7?q=80&w=1031&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';  
@@ -33,12 +36,20 @@ export class IndexComponent implements OnInit{
 
   ngOnInit(): void {
     this.cargarSeries();
+    this.generos.forEach(genero => this.cargarSeriesPorGenero(genero)); // Cargar series para cada género
   }
 
   cargarSeries(){
     this.homeService.listSerie()
     .subscribe(series =>{
-      this.series = this.obtenerAleatorio(series).slice(0,4);
+      this.series = series; // Asigna todas las series directamente
+      this.seriesAleatorias = this.obtenerAleatorio(series).slice(0,4); // Obtener 4 series aleatorias
+    });
+  }
+
+  cargarSeriesPorGenero(genero: Genero) {
+    this.homeService.buscarSeriesByGenero(genero).subscribe(series => {
+      this.seriesPorGenero[genero] = this.obtenerAleatorio(series).slice(0, 7); // Máximo 5 series aleatorias
     });
   }
 

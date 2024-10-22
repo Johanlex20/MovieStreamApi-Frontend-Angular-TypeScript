@@ -1,4 +1,4 @@
-<div class="grid lg:grid-cols-7 sm:grid-cols-1 md:grid-cols-3 gap-4 w-full p-4">
+<div class="grid lg:grid-cols-7 sm:grid-cols-1 md:grid-cols-3 gap-4 w-full p-4" *ngIf="series.length > 0; else noSeries">
     <div *ngFor="let serie of series">
         <div class="flex flex-col items-center w-full rounded-lg shadow-md overflow-hidden">
             <a [routerLink]="['/home/serie', serie.id]">
@@ -6,16 +6,20 @@
                     <img [src]="'http://localhost:8080/api/media/image?poster=%2F' + serie.poster" alt=""
                         class="w-full transition-transform duration-300 ease-in-out transform hover:scale-110">
                 </div>
-                <div class="text-gray-800 font-bold text-base">
+                <div class="text-gray-800 font-bold text-base mx-2">
                     <a [routerLink]="['/home/serie', serie.id]"
-                        class="cursor-pointer hover:text-sky-400 transition duration-200 ease-in-out">{{serie.titulo |
-                        slice:0:20}}</a>
+                        class="cursor-pointer hover:text-sky-400 transition duration-200 ease-in-out">{{serie.titulo | slice:0:20}}</a>
                 </div>
-
-                <div class="text-gray-500">
-                    <h1>{{serie.fechaLanzamientoSerie}}</h1>
+                <div class="text-gray-500 mx-2">
+                    <h1>{{serie.fechaLanzamientoSerie| date:'YYYY'}}</h1>
                 </div>
             </a>
         </div>
     </div>
 </div>
+
+<ng-template #noSeries>
+    <div class="text-center text-gray-500">
+        <p>No hay series disponibles en este momento.</p>
+    </div>
+</ng-template>
