@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Serie } from 'src/app/interfaces/serie.interfaces';
 import { HomeService } from '../../home.service';
 import { ActivatedRoute} from '@angular/router';
+import { environment } from 'src/environments/environment'; 
+
 
 @Component({
   selector: 'app-serie-perfil',
@@ -10,6 +12,8 @@ import { ActivatedRoute} from '@angular/router';
 })
 export class SeriePerfilComponent implements OnInit{
 
+  environment = environment;
+  
   serie?:Serie;
  
   constructor(

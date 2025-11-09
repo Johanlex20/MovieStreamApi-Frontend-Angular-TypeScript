@@ -63,7 +63,7 @@
                 <div class="flex justify-center p-3 relative">
                    
                     <button (click)="openModal(serie.videoKey)" class="group block relative">
-                        <img [src]="'http://localhost:8080/api/media/image?poster=%2F' + serie.poster"
+                        <img [src]="'image?poster=%2F' + serie.poster | apiImg"
                           alt="{{serie.titulo}}"
                           class="mb-5 md:m-0 rounded-xl shadow-lg shadow-violet-400 group-hover:brightness-50">
                       

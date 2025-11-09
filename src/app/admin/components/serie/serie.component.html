@@ -77,10 +77,9 @@
                         <td class="relative">
                             <a [href]="'https://www.youtube.com/watch?v='+serie.videoKey" target="_blank" class="group block relative">
                               <!-- Imagen del poster -->
-                              <img [src]="'http://localhost:8080/api/media/image?poster=%2F' + serie.poster"
+                              <img [src]="'image?poster=%2F' + serie.poster | apiImg"
                                 alt="{{serie.titulo}}"
                                 class="h-16 w-16 object-cover rounded-full mx-auto transition-all duration-300 group-hover:brightness-50">
-                            
                               <!-- Ícono de "Play" -->
                               <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                 <span class="material-icons text-white text-4xl">play_circle_filled</span>

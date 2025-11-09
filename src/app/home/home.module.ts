@@ -10,7 +10,7 @@ import { TemporadaComponent } from './components/temporada/temporada.component';
 import { TemporadaPerfilComponent } from './components/temporada-perfil/temporada-perfil.component';
 import { EpisodioPerfilComponent } from './components/episodio-perfil/episodio-perfil.component';
 import { FooterComponent } from './components/footer/footer.component';
-
+import { SharedModule } from '../home/shared/shared.module';
 
 
 
@@ -28,7 +28,8 @@ import { FooterComponent } from './components/footer/footer.component';
   imports: [
     CommonModule,
     HomeRoutingModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ]
 })
 export class HomeModule { }

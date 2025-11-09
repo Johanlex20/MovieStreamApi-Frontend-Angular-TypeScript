@@ -4,7 +4,7 @@
              
             <div class="">
                  <img class="w-[300px] rounded-md shadow-sm shadow-gray-500" [src]= "temporada?.posterTemporada
-                  ? 'http://localhost:8080/api/media/image?poster=%2F' + temporada.posterTemporada 
+                  ? ('image?poster=%2F' + temporada.posterTemporada | apiImg)
                   : 'https://media.istockphoto.com/id/2157299607/es/foto/se%C3%B1al-roja-de-advertencia-sobre-caja-de-cart%C3%B3n-seguridad-y-protecci%C3%B3n-en-las-l%C3%ADneas-de.jpg?s=2048x2048&w=is&k=20&c=xYjlW3Dhee2wClmDeiLeTr6-ZVgr3WRzyicTiQ3J6Vo='">
                 
                  <!-- Mostrar mensajes de error si no hay imagen o poster -->

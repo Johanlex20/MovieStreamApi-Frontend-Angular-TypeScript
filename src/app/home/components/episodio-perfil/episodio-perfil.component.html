@@ -1,6 +1,6 @@
 <section id="t" *ngIf="episodio" class="relative">
     <div class="md:flex  items-center p-4 md:p-8 md:h-[750px]" [ngStyle]="{
-        'background-image':'url(' + ('http://localhost:8080/api/media/image?poster=%2F' + episodio.portadaEpisodio) + ')',
+        'background-image':'url(' + ('image?poster=%2F' + episodio.portadaEpisodio | apiImg) + ')',
         'background-size':'cover',
         'background-position':'center'
         }">
@@ -8,7 +8,7 @@
         <div class="absolute inset-0 bg-slate-800 opacity-50"></div>
 
         <div class="flex justify-center items-center relative">
-            <img [src]="'http://localhost:8080/api/media/image?poster=%2F' + episodio.portadaEpisodio" alt=""
+            <img [src]="'image?poster=%2F' + episodio.portadaEpisodio | apiImg" alt=""
                 class="md:w-[450px] w-[350px] rounded-md shadow-sm shadow-gray-500">
         </div>
         <div class="text-white md:pl-8 md:w-4/5 h-full mt-8 md:mt-0 flex flex-col justify-center relative">
@@ -54,14 +54,14 @@
     <div class="p-4 h-auto border border-b-2 border-gray-100 flex w-full ">
        <div class="flex w-full">
             <div class="">
-                <img [src]="'http://localhost:8080/api/media/image?poster=%2F' + episodio.portadaEpisodio" alt="" class="w-[100px] rounded-md shadow-sm shadow-gray-500">
+                <img [src]="'image?poster=%2F' + episodio.portadaEpisodio | apiImg" alt="" class="w-[100px] rounded-md shadow-sm shadow-gray-500">
             </div>
             <div class="w-full ml-5">
                 <div class="flex items-center">
                     <h1 class="text-2xl font-bold mb-1 mr-2">Serie {{episodio.tituloSerie}}</h1> 
                     <h1 class="text-2xl sm:ml-3 text-gray-600">({{episodio.fechaEstreno | date:'YYYY'}})</h1>
                 </div>
-                <a [href]="'http://localhost:4200/home/serie/'+ serie.id +'#s'" class="flex items-center text-xl font-bold text-gray-600 hover:text-gray-400">
+                <a [href]="environment.apiBaseFront + '/home/serie/'+ serie.id +'#s'" class="flex items-center text-xl font-bold text-gray-600 hover:text-gray-400">
                     <span class="material-symbols-outlined text-base font-bold mr-1 flex justify-center"> arrow_back</span>Regresa a Serie
                 </a>
             </div>
@@ -85,7 +85,7 @@
                 <div class="flex justify-center p-3 relative">
                    
                     <button *ngIf="episodio.videoKey;" (click)="openModal(episodio.videoKey)" class="group block relative">
-                        <img [src]="'http://localhost:8080/api/media/image?poster=%2F' + episodio.portadaEpisodio"
+                        <img [src]="'image?poster=%2F' + episodio.portadaEpisodio | apiImg"
                           alt="{{episodio.tituloEpisodio}}"
                           class="mb-5 md:m-0 rounded-xl shadow-lg shadow-violet-400 group-hover:brightness-50 md:h-[450px] lg:h-[550px]">
                       

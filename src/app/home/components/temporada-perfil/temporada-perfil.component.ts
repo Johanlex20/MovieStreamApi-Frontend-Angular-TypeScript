@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HomeService } from '../../home.service';
 import { Episodio, Serie, Temporada } from 'src/app/interfaces/serie.interfaces';
 import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-temporada-perfil',
@@ -12,6 +13,7 @@ export class TemporadaPerfilComponent implements OnInit{
   
   temporada?:Temporada;
   serie?:Serie;
+  environment = environment;
 
   constructor(
     private homeService:HomeService,

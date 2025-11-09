@@ -5,7 +5,7 @@ import { SerieComponent } from './components/serie/serie.component';
 import { SerieFormComponent } from './components/serie-form/serie-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LayoutComponent } from './components/layout/layout.component';
-
+import { SharedModule } from '../home/shared/shared.module';
 
 
 @NgModule({
@@ -17,7 +17,8 @@ import { LayoutComponent } from './components/layout/layout.component';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    SharedModule
   ]
 })
 export class AdminModule { }

@@ -1,5 +1,5 @@
 <div *ngIf="form" class="relative flex flex-col justify-center min-h-screen items-center p-4 w-full" [ngStyle]="{
-        'background-image':'url(' + ('http://localhost:8080/api/media/image?poster=%2F' + serie?.poster) + ')',
+        'background-image':'url(' + ('image?poster=%2F' + serie?.poster | apiImg) + ')',
         'background-size':'cover',
         'background-position':'center'
         }">
@@ -193,7 +193,7 @@
                     *ngIf="serie">
                     <label class="font-extrabold text-2xl text-sky-900">Poster:</label>
                     <div class="flex justify-center items-center">
-                        <img class="" [src]="'http://localhost:8080/api/media/image?poster=%2F' + serie.poster"
+                        <img class="" [src]="'image?poster=%2F' + serie.poster | apiImg"
                             class="rounded-md border p-2 h-auto w-80" id="poster" type="img">
                     </div>
                 </div>
