@@ -9,7 +9,7 @@ import { HomeService} from '../../home.service';
 })
 export class CardComponent{
 
-  @Input() series:Serie[] =[];
-  
+  //@Input() series:Serie[] =[];
+  @Input() series: Serie[] | null = null;
  
 }

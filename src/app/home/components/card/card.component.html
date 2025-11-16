@@ -1,4 +1,4 @@
-<div class="grid lg:grid-cols-7 sm:grid-cols-1 md:grid-cols-3 gap-4 w-full p-4" *ngIf="series.length > 0; else noSeries">
+<div class="grid lg:grid-cols-7 sm:grid-cols-1 md:grid-cols-3 gap-4 w-full p-4" *ngIf="series && series.length > 0; else noSeries">
     <div *ngFor="let serie of series">
         <div class="flex flex-col items-center w-full rounded-lg shadow-md overflow-hidden">
             <a [routerLink]="['/home/serie', serie.id]">
